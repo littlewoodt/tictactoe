@@ -8,28 +8,73 @@ var TicTacToe = {
 
           ],
 
+                                                                                                                                                                                                            // diagonal is actually row n and col n one way only
+                                                                                                                                                                                                            // row is actually row n
+                                                                                                                                                                                                            // col is actually col n
 
-// diagonal is actually row n and col n
-// row is actually row n
-// col is actually col n
+                                                                                                                                                                                                            // use for boards of 3 to whatever
 
-// use for boards of 3 to whatever
+                                                                                                                                                                                                            // game over if game.length > 0 ?
 
-// game over if game.length > 0
+                                                                                                                                                                                                            // if row* === player
+                                                                                                                                                                                                            // if col* === player
+                                                                                                                                                                                                            //
+                                                                                                                                                                                                            // $("[id^=jander]")
+                                                                                                                                                                                                            // To get those that end with "jander"
 
-// 
+                                                                                                                                                                                                            // $("[id$=jander]")
 
+                                                                                                                                                                                                            //    player: [ 'x', 'o' ],
 
-// if row* === player
-// if col* === player
-//
+// 1. Board
+//    it needs work for multi board
+//    needs rows and columns
+//    need to be able to set a custom one
 
-//    player: [ 'x', 'o' ],
+// 2. Players
+//    2. There are 2 players kid.
+//    Choose player tokens
+//    Set to 'o' and 'x' for now
+
+// 3. Game 3 x 3 requirements
+//    Click square to play
+//    Add some cute hover
+//    Add some better text / layout
+
+// 4. End of game - display text / change colour
+//    End of game should feel like a winner...
+
+// 5. End of game - three ways
+//    Player1 wins
+//    player2 wins
+//    Tie
+
+// 6. Work out the winner
+//    if row* === player, player wins // return winner = player      // $("[id$=jander]")
+//    if col* === player, player wins // return winner = player
+//    if diag1 === player, player wins // return winner = player
+//    if diag2 === player, player wins // return winner = player
+//    return 'Player + wins'
+
+// 7. Work out tie game
+//    if counter is greater than 9 && winner.length < 1 ;
+//    return 'The game is a tie.'
+
+// 8. Activate reset to clear the board TOUCHY touchy
+//    return to grey, clear html div text, and message text
+//    needs to clear class
+//    .squares of  
+//      .player1 
+//      .player2
+//    #message of
+//      .player1 
+//      .player2
+//      .tieColor
 
     player: function ( player1, player2 ) {
           
-          player1: 'x',
-          player2: 'o',
+          player1 = 'x';
+          player2 = 'o';
 
     },
 
@@ -39,11 +84,12 @@ var TicTacToe = {
         // game over, reset
         $( '.square' ).removeClass( 'player1' );
         $( '.square' ).removeClass( 'player2' );
-        $( '.message' ).removeClass( 'player1Color' );
-        $( '.message' ).removeClass( 'player2Color' );
-        $( '.message' ).removeClass( 'tieColor' );
+        $( '#message' ).removeClass( 'player1Color' );
+        $( '#message' ).removeClass( 'player2Color' );
+        $( '#message' ).removeClass( 'tieColor' );
         $( '.square' ).text( '' );
         $( '#message' ).text( '' );
+
         counter = 1;
         winner = '';
       }
@@ -55,19 +101,18 @@ var TicTacToe = {
       if ( ( TicTacToe.game[0] === player || TicTacToe.game[1] === player || TicTacToe.game[2] === player ) || // win by row
         ( TicTacToe.game[0] === player || TicTacToe.game[1] === player || TicTacToe.game[2] === player ) //
 
-
        {
 
         player = winner;
         return winner;
 
-      }
+      },
 
     
-    calculateWinner: function ( ) {
+    calculateWinner: function ( ) {  //   $("[id^=jander]")
 
       
-      if ( $( '.row1 .player1' ).length === 3 || $( '.col1.player1' ).length === 3 || $( '.diag1.player1' ).length === 3 ) {
+      if ( $( '.row1.player1' ).length === 3 || $( '.col1.player1' ).length === 3 || $( '.diag1.player1' ).length === 3 ) {
         winner = TicTacToe.player1;
       }
 
@@ -166,21 +211,6 @@ $( document ).ready( function ( ) {
 
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
