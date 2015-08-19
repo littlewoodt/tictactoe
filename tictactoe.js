@@ -1,8 +1,37 @@
-var TicTacToe = { // do as rows and cols array?
+var TicTacToe = { 
     
+    game: [ // [ 3,3 ]
 
-    player1: 'x',
-    player2: 'o',
+            [ $( '.row1.col1' ) ],  [ $( '.row1.col2' ) ],  [ $( '.row1.col3' ) ], // evaluates to [ [ x ] [ x ] [ x ] ]   // game[0] === [ x, x, x ] === player
+            [ $( '.row2.col1' ) ],  [ $( '.row2.col2' ) ],  [ $( '.row2.col3' ) ], // evaluates to [ [ o ] [ '' ] [ '' ] ] // game[1] === [ x, x, x ] === player
+            [ $( '.row3.col1' ) ],  [ $( '.row3.col2' ) ],  [ $( '.row3.col3' ) ]  // evaluates to [ [ x ] [ o ] [ x ] ]   // game[2] === [ x, x, x ] === player
+
+          ],
+
+
+// diagonal is actually row n and col n
+// row is actually row n
+// col is actually col n
+
+// use for boards of 3 to whatever
+
+// game over if game.length > 0
+
+// 
+
+
+// if row* === player
+// if col* === player
+//
+
+//    player: [ 'x', 'o' ],
+
+    player: function ( player1, player2 ) {
+          
+          player1: 'x',
+          player2: 'o',
+
+    },
 
     resetIfGameOver: function ( ) {
       if ( counter > 9 || winner.length > 0 ) {
@@ -19,13 +48,25 @@ var TicTacToe = { // do as rows and cols array?
         winner = '';
       }
     },
+   
 
-    // winner is player
-    // by row || by col || by diag = 3 === to player TicTacToe.player1 || TicTacToe.player2
-    // player 1 by rows
+    calculateWinner: function ( ) { 
+
+      if ( ( TicTacToe.game[0] === player || TicTacToe.game[1] === player || TicTacToe.game[2] === player ) || // win by row
+        ( TicTacToe.game[0] === player || TicTacToe.game[1] === player || TicTacToe.game[2] === player ) //
+
+
+       {
+
+        player = winner;
+        return winner;
+
+      }
+
     
     calculateWinner: function ( ) {
 
+      
       if ( $( '.row1 .player1' ).length === 3 || $( '.col1.player1' ).length === 3 || $( '.diag1.player1' ).length === 3 ) {
         winner = TicTacToe.player1;
       }
@@ -34,13 +75,16 @@ var TicTacToe = { // do as rows and cols array?
         winner = TicTacToe.player2;
       }
 
-      if ( winner.length < 0 && counter < 9 ) {
+     if ( winner.length === 0 && counter === 9 ) { // if counter === 9 and winner.length === 0 //
         winner = 'tie';
-      } 
+      }
+
     },
 
     winnerIs: function ( ) {
-      if ( winner === TicTacToe.player1 ) {
+
+      if ( winner === TicTacToe.player1 ) { // replace with just player // this?
+      // player1 || player2 || tie 
 
           // return winner or tie
           $( '#message' ).addClass( 'player1Color' );
@@ -58,17 +102,39 @@ var TicTacToe = { // do as rows and cols array?
           return 'tie';
       }
     },
+
+    calculateWinnertry: function ( ) {
+      
+      if ( $( '.row1 .player1' ).length === 3 || $( '.col1.player1' ).length === 3 || $( '.diag1.player1' ).length === 3 ) {
+        winner = TicTacToe.player1;
+      }
+
+      if ( $( '.row1 .player2' ).length === 3 || $( '.col1.player2' ).length === 3 || $( '.diag1.player2' ).length === 3 ) {
+        winner = TicTacToe.player2;
+      }
+
+      if ( winner.length === 0 && counter === 9 && TicTacToe.player1 > TicTacToe.player2 ) { // if counter === 9 and winner.length === 0 //
+        winner = 'tie';
+      }
+
+    },
+
+    // player1 || player2 || tie 
+//    winnerIs2: function ( ) {
+//    if ( winner === TicTacToe.player1 || winner === TicTacToe.player2 || winner === ( '' ) && TicTacToe.player1 > TicTacToe.player2 ) {  // player1 || player2 || tie 
+//      return winner || tie;
+//    }
 };
 
 var counter = 1;
 var winner = ""; // if x player 1 if o player2
 
-
 $( document ).ready( function ( ) {
-    
+
   $( '.square' ).on( 'click', function ( ) { 
 
-    //debugger;
+    debugger;
+
     TicTacToe.resetIfGameOver();
 
     // find class square add class player 1
@@ -77,7 +143,6 @@ $( document ).ready( function ( ) {
     // else set class player 2, set text to 2
 
     if ( counter % 2 === 0 ) {
-    // .row1 and .player1  .length === 3
 
       $( this ).removeClass( 'player2' );
       $( this ).addClass( 'player1' );
@@ -95,91 +160,33 @@ $( document ).ready( function ( ) {
 
 // debugger;
     
-    // player by diagonal
-    // row1 col1 row2 col2 row3 col3
-    // row3 col3 row2 col2 row1 col1
-    
-    // player 1 by diagonal
-    
-    /*
-    if ( $( '.diag1.player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-      if ( $( '.diag2.player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    // player 2 by diagonal
-    
-    if ( $( '.diag1.player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    
-    if ( $( '.diag2.player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    
-    // player 1 by rows
-    
-    if ( $( '.row1 .player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    if ( $( '.row2 .player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    if ( $( '.row3 .player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    // player 1 by cols
-    
-    if ( $( '.col1.player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    if ( $( '.col2.player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    if ( $( '.col3.player1' ).length === 3 ) {
-      winner = TicTacToe.player1;
-    }
-    
-    // player 2 by rows
-    
-    if ( $( '.row1 .player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    if ( $( '.row2 .player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    if ( $( '.row3 .player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    
-    // player 2 by cols
-    
-    if ( $( '.col1.player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    
-    if ( $( '.col2.player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-
-    if ( $( '.col3.player2' ).length === 3 ) {
-      winner = TicTacToe.player2;
-    }
-    */
     TicTacToe.calculateWinner();
 
-    TicTacToe.winnerIs();    
+    TicTacToe.calculateWinnertry();   
 
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 // 1 set up a grid - html / css
