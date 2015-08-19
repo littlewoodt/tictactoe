@@ -1,0 +1,77 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,700italic);
+
+body {
+  color: black;
+  background-color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto; /* 0 vertically, center horizontally */
+  text-align: center;
+  position: relative;
+}
+
+.row1 {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.row2 {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.row3 {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.square {
+  width: 30%;
+  height: 200px;
+  background: gray;
+  display: inline-block;
+  margin: 10px;
+  color: white;
+  font-size: 24px;
+}
+
+.clear {
+  clear: both;
+}
+
+.square {
+  display: inline-block;
+  width: 90px;
+  height: 90px; 
+  line-height: 90px;
+  overflow: hidden;
+}
+
+.player1 {
+  background-color: black;
+}
+
+.player2 {
+  background-color: #01a08b;
+}
+
+.player1Color {
+  color: black;
+}
+
+.player2Color {
+  color: #01a08b;
+}
+
+.tieColor {
+  color: gray;
+}
