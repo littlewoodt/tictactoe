@@ -1,0 +1,46 @@
+// 2. Players
+//    There are 2 players kid.
+//    Choose player pieces
+//    Set to 'o' and 'x' for now
+
+   player: function ( player1, player2 ) { 
+        this.player1 = player1;
+        this.player2 = player2; 
+        player1 = TicTacToe.pieces[0]; //'x'; 
+        player2 = TicTacToe.pieces[1]; //'o'; 
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    winning: function ( ) {
+
+      if ( winner === TicTacToe.player1 || winner === TicTacToe.player2 || ( winner.length === 0 && counter === 9 ) ) {  
+
+          // return winner or tie
+          $( '#message' ).addClass( 'player1Color' );
+          $( '#message' ).text( 'you win ' + winner );
+          return winner;
+
+        } else if ( winner === TicTacToe.player2 ) {
+          $( '#message' ).addClass( 'player2Color' );
+          $( '#message' ).text( 'you win ' + winner );
+          return winner;
+
+        } else {
+          $( '#message' ).addClass( 'tieColor' );
+          $( '#message' ).text( 'its a tie' );
+          return 'tie';
+      }
+    },

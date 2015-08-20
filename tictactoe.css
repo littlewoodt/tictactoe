@@ -65,11 +65,11 @@ body {
 }
 
 .player1Color {
-  color: black;
+  color: #01a08b;
 }
 
 .player2Color {
-  color: #01a08b;
+  color: black;
 }
 
 .tieColor {
