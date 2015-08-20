@@ -16,22 +16,7 @@ var TicTacToe = {
     pieces: [ 'x', 'o' ],
 
     player1: 'x',
-
     player2: 'o',
-
-// 2. Players
-//    There are 2 players kid.
-//    Choose player pieces
-//    Set to 'o' and 'x' for now
-
-/*    player: function ( player1, player2 ) { 
-        this.player1 = player1;
-        this.player2 = player2; 
-        player1 = TicTacToe.pieces[0]; //'x'; 
-        player2 = TicTacToe.pieces[1]; //'o'; 
-    },
-*/
-
 
 // 3. Gameplay 3 x 3 ( requirements )
 //    Click square to play
@@ -39,14 +24,12 @@ var TicTacToe = {
 //    Add random colours
 //    Add some better text / layout
 
-//    Function below    ////////////////////////////////////////////////////////////////////////////////////////////// 
-
 // 4. End of game - display text / change colour
 //    End of game should feel like a winner.
 
-  winning: function ( ) {
+    winning: function ( ) {
 
-      if ( winner === TicTacToe.player1 || winner === TicTacToe.player2 || ( winner.length === 0 && count === 9 ) ) {  
+      if ( winner === TicTacToe.player1 || winner === TicTacToe.player2 || ( winner.length === 0 && counter === 9 ) ) {  
 
           // return winner or tie
           $( '#message' ).addClass( 'player1Color' );
@@ -65,13 +48,10 @@ var TicTacToe = {
       }
     },
 
-
 // 5. End of game - three ways
 //    Player1 wins
 //    player2 wins
 //    Tie
-
-
 
 // 6. Work out the winner
 //    if row* === player, player wins // return winner = player      
@@ -80,12 +60,13 @@ var TicTacToe = {
 //    if diag2 === player, player wins // return winner = player
 //    return 'Player + wins'
 
-
     isWinner: function ( ) {
 
-      console.log( $(".row1").text(), TicTacToe.player1+TicTacToe.player1+TicTacToe.player1 );
+      console.log( $( ".row1" ).text( ), TicTacToe.player1+TicTacToe.player1+TicTacToe.player1 );
 
       var playerOneWin = TicTacToe.player1 + TicTacToe.player1 + TicTacToe.player1;
+
+      var playerTwoWin = TicTacToe.player2 + TicTacToe.player2 + TicTacToe.player2;
 
       if ( $( '.row1' ).text() === playerOneWin || $( '.row2' ).text() === playerOneWin || $( '.row3' ).text() === playerOneWin ) { 
         console.log( "PLAYER ONE IS THE WINNER!" );
@@ -96,36 +77,21 @@ var TicTacToe = {
       } else if ( $( '.diag1' ).text() === playerOneWin || $('.diag2' ).text() === playerOneWin ) {
         console.log( "PLAYER ONE IS THE WINNER!" );
 
-      } else if ( $( '.row1' ).text() === playerTwoWin || $( '.row1' ).text() === playerTwoWin || $( '.row3' ).text( === playerTwoWin ) {
+      } else if ( $( '.row1' ).text() === playerTwoWin || $( '.row2' ).text() === playerTwoWin || $( '.row3' ).text() === playerTwoWin ) {
         console.log( "PLAYER TWO IS THE WINNER" );
       
-      } else if ( $ ( '.col1' ).text() === playerTwoWin || $( '.col2').text() === playerTwoWin || $( '.col3' ).text( === playerTwoWin) {
+      } else if ( $ ( '.col1' ).text() === playerTwoWin || $( '.col2').text() === playerTwoWin || $( '.col3' ).text() === playerTwoWin ) {
         console.log( "PLAYER TWO IS THE WINNER" );
       
-      } else if ( $( '.diag1' ).text() === playerTwoWin || $( '.diag2' ).text() === platerTwoWin ) {
+      } else if ( $( '.diag1' ).text() === playerTwoWin || $( '.diag2' ).text() === playerTwoWin ) {
         console.log( "PLAYER TWO IS WINNER" );
-      }
-/*
-      if ( ( $( '.col1' ).text() || $( '.col2' ).text() || $( '.col3' ).text() ) === player1+player1+player1 ) { 
-          return player1 = winner;
-      }
-
-      if ( ( $( '.col1' ).text() || $( '.col2' ).text() || $( '.col3' ).text() ) === player2+player2+player2 ) { 
-          return player1 = winner;
+      
+      } else {
+        console.log( "IT'S A TIE" );
+ //       TicTacToe.winning();
       }
 
-      if ( ( $( '.diag1' ).text() || $( '.diag1' ).text() || $( '.diag1' ).text() ) === player1+player1+player1 ) {
-          return player1 = winner;
-      }
-
-      if ( ( $( '.diag1' ).text() || $( '.diag1' ).text() || $( '.diag1' ).text() ) === player2+player2+player2 ) {
-          return player2 = winner;
-      }
     },
-*/
-//      ( $( '.col1' ).text() || $( '.col2' ).text() || $( '.col3' ).text() ) === ( player1+player1+player1 || player2+player2+player2 ); // wins cols
-//      ( $( '.diag1' ).text() || $( '.diag1' ).text() || $( '.diag1' ).text() ) === ( player1+player1+player1 || player2+player2+player2 ); // wins diag1
-//      ( $( '.diag2' ).text() || $( '.diag2' ).text() || $( '.diag2' ).text() ) === ( player1+player1+player1 || player2+player2+player2 ); // wins diag1
 
 // 7. Work out tie game
 //    if counter is greater than 9 && winner.length < 1 ;
@@ -173,11 +139,6 @@ $( document ).ready( function ( ) {
 
 // debugger;
 
-
- //   TicTacToe.player( 'x', 'o' );
-
- //   TicTacToe.player1 
-
     // find class square add class player1
     // on game start, set counter to zero
     // if even, set class player1, set text 1
@@ -200,7 +161,10 @@ $( document ).ready( function ( ) {
 
     TicTacToe.resetIfGameOver( );
 
+//    TicTacToe.winning( );
+
     TicTacToe.isWinner( );
+
   });
 
 
