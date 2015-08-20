@@ -22,7 +22,6 @@ var TicTacToe = {
 //    Add some better text / layout
 
 // 4. End of game - display text / change colour
-//    End of game should feel like a winner.
 
 // 5. End of game - three ways
 //    Player1 wins
@@ -34,7 +33,6 @@ var TicTacToe = {
 //    if col classes === player, player wins
 //    if diag1 classes === player, player wins
 //    if diag2 classes === player, player wins
-//    return 'Player + wins'
 
     isWinner: function ( ) {
 
@@ -90,15 +88,14 @@ var TicTacToe = {
 
 // 7. Work out tie game
 //    if counter is greater than 9 && winner.length < 1 ;
-//    return 'The game is a tie.'
 
-// 8. Activate reset to clear the board touchy
+// 8. Activate reset to clear the board
 //    return to grey, clear html div text, and message text
 //    needs to clear class
 //    .squares of  
 //      .player1 
 //      .player2
-//    #message of
+//    .message of
 //      .player1 
 //      .player2
 //      .tieColor
@@ -132,8 +129,6 @@ $( document ).ready( function ( ) {
 
     TicTacToe.resetIfGameOver( );
 
-// debugger;
-
     // find class square add class player1
     // on game start, set counter to zero
     // if even, set class player1, set text 1
@@ -157,7 +152,5 @@ $( document ).ready( function ( ) {
     TicTacToe.isWinner( );
 
   });
-
-// debugger;
 
 });
