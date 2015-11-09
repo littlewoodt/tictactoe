@@ -40,43 +40,23 @@ var TicTacToe = {
 
       var playerTwoWin = TicTacToe.player2 + TicTacToe.player2 + TicTacToe.player2;
 
-      if ( $( '.row1' ).text() === playerOneWin || $( '.row2' ).text() === playerOneWin || $( '.row3' ).text() === playerOneWin ) { 
 
-        winner = TicTacToe.player1;
-        $( '.message' ).addClass( 'player1Color' );
-        $( '.message' ).text( 'you are the winner ' + winner );
-        
-      } else if ( $( '.col1' ).text() === playerOneWin || $( '.col2' ).text() === playerOneWin || $( '.col3' ).text() === playerOneWin ) {
+      // o is two
 
-        winner = TicTacToe.player1;
-        $( '.message' ).addClass( 'player1Color' );
-        $( '.message' ).text( 'you are the winner ' + winner );
-
-      } else if ( $( '.diag1' ).text() === playerOneWin || $('.diag2' ).text() === playerOneWin ) {
+      // x is one
+      if ( $( '.row1 .crossone' ).length === 3 || $( '.row2 .crossone' ).length === 3 || $( '.row3 .crossone' ).length === 3 || $( '.diag1 .crossone' ).length === 3 || $( '.diag2 .crossone' ).length === 3 || $('.col1 .crossone' ).length === 3 || $('.col2 .crossone' ).length === 3 || $('.col3 .crossone' ).length === 3 ) {  
 
         winner = TicTacToe.player1;
         $( '.message' ).addClass( 'player1Color' );
         $( '.message' ).text( 'you are the winner ' + winner );
 
-      } else if ( $( '.row1' ).text() === playerTwoWin || $( '.row2' ).text() === playerTwoWin || $( '.row3' ).text() === playerTwoWin ) {
+      } else if ( $( '.row1 .circle' ).length === 3 || $( '.row2 .circle' ).length === 3 || $( '.row3 .circle' ).length === 3 || $( '.diag1 .circle' ).length === 3 || $( '.diag2 .circle' ).length === 3 || $('.col1 .circle' ).length === 3 || $('.col2 .circle' ).length === 3 || $('.col3 .circle' ).length === 3 ) {
 
         winner = TicTacToe.player2;
         $( '.message' ).addClass( 'player2Color' );
         $( '.message' ).text( 'you are the winner ' + winner );
       
-      } else if ( $ ( '.col1' ).text() === playerTwoWin || $( '.col2').text() === playerTwoWin || $( '.col3' ).text() === playerTwoWin ) {
-
-        winner = TicTacToe.player2;
-        $( '.message' ).addClass( 'player2Color' );
-        $( '.message' ).text( 'you are the winner ' + winner );
-      
-      } else if ( $( '.diag1' ).text() === playerTwoWin || $( '.diag2' ).text() === playerTwoWin ) {
-
-        winner = TicTacToe.player2;
-        $( '.message' ).addClass( 'player2Color' );
-        $( '.message' ).text( 'you are the winner ' + winner );
-      
-      } else if ( winner.length === 0 && counter === 9 ) {
+      } else if ( winner.length === 0 && counter === 10 ) {
 
         winner = "";
         $( '.message' ).addClass( 'tieColor' );
@@ -101,7 +81,7 @@ var TicTacToe = {
 //      .tieColor
 
     resetIfGameOver: function ( ) {
-      if ( counter >= 9 || winner.length > 0 ) {
+      if ( counter >= 10 || winner.length > 0 ) {
 
         // game over, reset
         $( '.square' ).removeClass( 'player1' );
@@ -134,19 +114,23 @@ $( document ).ready( function ( ) {
     // if even, set class player1, set text 1
     // else set class player2, set text to 2
 
-    if ( counter % 2 === 0 ) {
+    if (! $(this).hasClass('circle') || $(this).hasClass('crossone')) {
 
-      $( this ).removeClass( 'player2' );
-      $( this ).addClass( 'player1' );
-      $( this ).text( TicTacToe.player2 );
-      counter += 1;
-
-    } else {
-
-      $( this ).removeClass( 'player1' );
-      $( this ).addClass( 'player2' );
-      $( this ).text( TicTacToe.player1 );
-      counter += 1;
+      if ( counter % 2 === 0 ) {
+        
+          $( this ).removeClass( 'player2' );
+          $( this ).addClass( 'player1' ); 
+          $( this ).append('<div class="crossone"></div>').append('<div class="crosstwo"></div>');
+        // $( this ).text( TicTacToe.player2 );
+          counter += 1;
+        
+      } else {
+        $( this ).removeClass( 'player1' );
+        $( this ).addClass( 'player2' );
+        $( this ).append('<div class="circle"></div>');
+        //$( this ).text( TicTacToe.player1 );
+        counter += 1;
+      }
     }
 
     TicTacToe.isWinner( );
