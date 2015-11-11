@@ -21,7 +21,7 @@ var TicTacToe = {
 //    Add random colours
 //    Add some better text / layout
 
-// 4. End of game - display text / change colour
+// 4. End of game - display text
 
 // 5. End of game - three ways
 //    Player1 wins
@@ -40,10 +40,8 @@ var TicTacToe = {
 
       var playerTwoWin = TicTacToe.player2 + TicTacToe.player2 + TicTacToe.player2;
 
-
-      // o is two
-
-      // x is one
+      // x is player one
+      // o is player two
       if ( $( '.row1 .crossone' ).length === 3 || $( '.row2 .crossone' ).length === 3 || $( '.row3 .crossone' ).length === 3 || $( '.diag1 .crossone' ).length === 3 || $( '.diag2 .crossone' ).length === 3 || $('.col1 .crossone' ).length === 3 || $('.col2 .crossone' ).length === 3 || $('.col3 .crossone' ).length === 3 ) {  
 
         winner = TicTacToe.player1;
@@ -75,7 +73,7 @@ var TicTacToe = {
 //    .squares of  
 //      .player1 
 //      .player2
-//    .message of
+//      .message of
 //      .player1 
 //      .player2
 //      .tieColor
@@ -121,14 +119,14 @@ $( document ).ready( function ( ) {
           $( this ).removeClass( 'player2' );
           $( this ).addClass( 'player1' ); 
           $( this ).append('<div class="crossone"></div>').append('<div class="crosstwo"></div>');
-        // $( this ).text( TicTacToe.player2 );
+        
           counter += 1;
         
       } else {
         $( this ).removeClass( 'player1' );
         $( this ).addClass( 'player2' );
         $( this ).append('<div class="circle"></div>');
-        //$( this ).text( TicTacToe.player1 );
+        
         counter += 1;
       }
     }
